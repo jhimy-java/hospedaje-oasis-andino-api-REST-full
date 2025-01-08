@@ -25,10 +25,15 @@ dependencies {
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
     implementation 'org.mapstruct:mapstruct:1.6.3'
-
     annotationProcessor 'org.mapstruct:mapstruct-processor:1.6.3'
+
+    implementation group: 'org.junit.jupiter', name: 'junit-jupiter', version: '5.11.4'
+    implementation group: 'org.mockito', name: 'mockito-core', version: '5.15.2'
+
 }
 
 tasks.named('test') {
     useJUnitPlatform()
 }
+
+
