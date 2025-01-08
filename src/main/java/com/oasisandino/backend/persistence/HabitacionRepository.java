@@ -14,11 +14,14 @@ import java.util.Optional;
 @Repository
 public class HabitacionRepository implements RoomRepository {
 
-    @Autowired
-    private HabitacionCrudRepository habitacionCrudRepository;
+    private final HabitacionCrudRepository habitacionCrudRepository;
+    private final RoomMapper mapper;
 
-    @Autowired
-    private RoomMapper mapper;
+    @Autowired // opcional en constructores
+    public HabitacionRepository(HabitacionCrudRepository habitacionCrudRepository, RoomMapper mapper) {
+        this.habitacionCrudRepository = habitacionCrudRepository;
+        this.mapper = mapper;
+    }
 
     @Override
     public List<Room> findAllRoom() {
