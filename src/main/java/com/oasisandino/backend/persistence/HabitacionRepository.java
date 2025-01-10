@@ -6,6 +6,7 @@ import com.oasisandino.backend.persistence.crud.HabitacionCrudRepository;
 import com.oasisandino.backend.persistence.entity.Habitacion;
 import com.oasisandino.backend.persistence.mapper.RoomMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -18,7 +19,7 @@ public class HabitacionRepository implements RoomRepository {
     private final RoomMapper mapper;
 
     @Autowired // opcional en constructores
-    public HabitacionRepository(HabitacionCrudRepository habitacionCrudRepository, RoomMapper mapper) {
+    public HabitacionRepository(HabitacionCrudRepository habitacionCrudRepository, @Qualifier("roomMapperImpl") RoomMapper mapper) {
         this.habitacionCrudRepository = habitacionCrudRepository;
         this.mapper = mapper;
     }

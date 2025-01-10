@@ -6,9 +6,13 @@ import jakarta.persistence.*;
 @Table(name = "habitaciones")
 public class Habitacion {
 
+    //@Id
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@Column(name = "id_habitacion")
+    //private Integer idHabitacion;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_habitacion")
+    @SequenceGenerator(name = "habitacion_seq", sequenceName = "habitacion_sequence", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "habitacion_seq")
     private Integer idHabitacion;
 
     private String numero;

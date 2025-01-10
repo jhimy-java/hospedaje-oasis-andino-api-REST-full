@@ -4,6 +4,7 @@ import com.oasisandino.backend.domain.Room;
 import com.oasisandino.backend.persistence.crud.HabitacionCrudRepository;
 import com.oasisandino.backend.persistence.entity.Habitacion;
 import com.oasisandino.backend.persistence.mapper.RoomMapper;
+import com.oasisandino.backend.persistence.mapper.RoomMapperImpl;
 import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -22,15 +23,15 @@ public class HabitacionRepositoryIntegrationTest {
     @Autowired
     private HabitacionCrudRepository habitacionCrudRepository;
 
-    @Autowired
-    private RoomMapper roomMapper;
 
     private HabitacionRepository habitacionRepository;
 
     @BeforeEach
     void setUp() {
+        RoomMapper roomMapper = new RoomMapperImpl(); // Instancia generada automáticamente por MapStruct
         habitacionRepository = new HabitacionRepository(habitacionCrudRepository, roomMapper);
     }
+
 
     @AfterEach
     void tearDown() {
