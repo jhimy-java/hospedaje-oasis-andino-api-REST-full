@@ -14,24 +14,24 @@ public class UserService {
 
 
     @Autowired
-    UserRepository userRepository;
+    private UserRepository userRepository;
 
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
-    List<User> findAllUsers()
+    public List<User> findAllUsers()
     {
         return userRepository.findAllUsers();
     }
-    Optional<User> getUserById(int id)
+    public Optional<User> getUserById(int id)
     {
         return userRepository.getUserById(id);
     }
-    User saveUser(User user)
+    public User saveUser(User user)
     {
         return userRepository.saveUser(user);
     }
-    boolean deleteUserById(int id)
+    public boolean deleteUserById(int id)
     {
         return getUserById(id).map(user -> {
             userRepository.deleteUserById(id);
