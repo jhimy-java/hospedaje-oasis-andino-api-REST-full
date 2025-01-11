@@ -3,14 +3,17 @@ package com.oasisandino.backend.domain.service;
 import com.oasisandino.backend.domain.User;
 import com.oasisandino.backend.domain.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class UserService {
 
 
+    @Autowired
     UserRepository userRepository;
 
     public UserService(UserRepository userRepository) {
@@ -28,11 +31,12 @@ public class UserService {
     {
         return userRepository.saveUser(user);
     }
-    void deleteUserById(int id)
+    boolean deleteUserById(int id)
     {
-        userRepository.deleteUserById(id);
+        return getUserById(id).map(user -> {
+            userRepository.deleteUserById(id);
+            return true;
+        }).orElse(false);
     }
-
-
 
 }

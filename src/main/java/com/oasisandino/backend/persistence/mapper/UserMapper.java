@@ -1,9 +1,8 @@
 package com.oasisandino.backend.persistence.mapper;
 
 
-import com.oasisandino.backend.domain.Room;
+
 import com.oasisandino.backend.domain.User;
-import com.oasisandino.backend.persistence.entity.Habitacion;
 import com.oasisandino.backend.persistence.entity.Usuario;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
@@ -26,5 +25,5 @@ public interface UserMapper {
     List<User> toUsers(List<Usuario> usuarios);
 
     @InheritInverseConfiguration
-    Habitacion toHabitacion(Room room);
+    Usuario toUsuario(User user);
 }
