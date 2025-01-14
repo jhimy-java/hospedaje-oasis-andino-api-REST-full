@@ -6,6 +6,7 @@ import com.oasisandino.backend.persistence.crud.UsuarioCrudRepository;
 import com.oasisandino.backend.persistence.entity.Usuario;
 import com.oasisandino.backend.persistence.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -19,7 +20,7 @@ public class UsuarioRepository implements UserRepository {
     private final UserMapper mapper;
 
     @Autowired
-    public UsuarioRepository(UsuarioCrudRepository usuarioCrudRepository,UserMapper userMapper) {
+    public UsuarioRepository(UsuarioCrudRepository usuarioCrudRepository,@Qualifier("userMapperImpl") UserMapper userMapper) {
         this.usuarioCrudRepository = usuarioCrudRepository;
         this.mapper = userMapper;
     }
